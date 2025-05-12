@@ -27,7 +27,7 @@
         }
         
         .start-button {
-            background-color: #4CAF50; /* mesma cor do botão Claim Now */
+            background-color: #4CAF50;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -44,7 +44,7 @@
         
         .content {
             display: none;
-            margin-top: 20px;
+            margin-top: 10px; /* Espaço reduzido aqui */
         }
         
         h1 {
@@ -127,10 +127,7 @@
     
     <script>
         document.getElementById('startButton').addEventListener('click', function() {
-            // Esconde o botão Start
             this.style.display = 'none';
-            
-            // Mostra o conteúdo
             document.getElementById('content').style.display = 'block';
         });
     </script>
