@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exclusive Rewards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* cinza bem claro */
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,7 +18,7 @@
         
         .container {
             background-color: white;
-            border-radius: 15px; /* pontas levemente arredondadas */
+            border-radius: 15px;
             padding: 30px;
             width: 80%;
             max-width: 500px;
@@ -26,7 +27,7 @@
         }
         
         .start-button {
-            background-color: #FFA500; /* laranja */
+            background-color: #4CAF50; /* mesma cor do botão Claim Now */
             color: white;
             border: none;
             padding: 15px 30px;
@@ -38,11 +39,11 @@
         }
         
         .start-button:hover {
-            background-color: #FF8C00; /* laranja mais escuro no hover */
+            background-color: #45a049;
         }
         
         .content {
-            display: none; /* inicialmente escondido */
+            display: none;
             margin-top: 20px;
         }
         
@@ -50,6 +51,7 @@
             color: #333;
             font-size: 24px;
             margin-bottom: 20px;
+            font-weight: 600;
         }
         
         .benefit-item {
@@ -58,16 +60,18 @@
             margin-bottom: 15px;
             text-align: left;
             padding-left: 20px;
+            font-weight: 500;
         }
         
         .checkmark {
-            color: #4CAF50; /* cor do check */
+            color: #4CAF50;
             font-size: 20px;
             margin-right: 10px;
+            font-weight: bold;
         }
         
         .claim-button {
-            background-color: #4CAF50; /* verde */
+            background-color: #4CAF50;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -77,10 +81,12 @@
             font-weight: bold;
             margin-top: 20px;
             transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .claim-button:hover {
-            background-color: #45a049; /* verde mais escuro no hover */
+            background-color: #45a049;
         }
         
         .ps-note {
@@ -113,7 +119,7 @@
                 <span>Claim your exclusive rewards</span>
             </div>
             
-            <button class="claim-button">Claim Now!</button>
+            <a href="https://www.google.com" class="claim-button">Claim Now!</a>
             
             <p class="ps-note">P.S. Please make sure to follow the rules mentioned so you can redeem your reward.</p>
         </div>
