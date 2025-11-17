@@ -52,7 +52,12 @@
   
   if (isMobile && campaignUrl) {
     const finalURL = new URL(campaignUrl);
-    
+
+const currentParams = new URLSearchParams(window.location.search);
+currentParams.forEach((value, key) => {
+  finalURL.searchParams.set(key, value);
+});
+
     if (forceEmptySource) {
       finalURL.searchParams.set('s1', '');
       console.log('Adding empty s1');
