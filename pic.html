@@ -1,8 +1,83 @@
 <!DOCTYPE html><html lang="en" data-capo=""><head>
  <meta charset="utf-8">
 
-<script> function getURLParameter(name) { const urlParams = new URLSearchParams(window.location.search); return urlParams.get(name); } function getSlugFromPath() { const path = window.location.pathname; const slug = path.replace(/^\/+|\/+$/g, ''); return slug || ''; } (function ensureTTCLIDParamOnLander() { try { const u = new URL(window.location.href); if (!u.searchParams.has('ttclid')) { u.searchParams.set('ttclid', ''); history.replaceState(null, '', u.toString()); console.log('Ensured ttclid param on lander URL'); } } catch(e) { console.log('ttclid lander ensure error', e); } })(); let s = getURLParameter('s'); const o = getURLParameter('o') || 'cash'; const slug = getSlugFromPath(); const ttclid = getURLParameter('ttclid'); let campaignUrl; let sourceValue = s; let forceEmptySource = false; let isSpecialCase = false; console.log('Checking offer:', o.toLowerCase(), 'source:', s); // [All your existing if/else conditions remain the same] if (o.toLowerCase() === 'apple' && s === 'Test') { campaignUrl = 'https://fb.track-conv.shop/visit/4240dd82-3e3d-4d47-a253-ee1a528396ab?'; sourceValue = 'Test'; forceEmptySource = true; isSpecialCase = true; } console.log('Final campaignUrl:', campaignUrl); console.log('Final sourceValue:', sourceValue); console.log('forceEmptySource:', forceEmptySource); const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent); if (isMobile && campaignUrl) { const finalURL = new URL(campaignUrl); if (forceEmptySource) { finalURL.searchParams.set('s1', ''); console.log('Adding empty s1'); } else if (sourceValue) { finalURL.searchParams.set('s1', sourceValue); console.log('Adding s1:', sourceValue); } if (slug) { finalURL.searchParams.set('s2', slug); console.log('Adding s2:', slug); } const ttclidVal = (ttclid !== null) ? ttclid : ''; finalURL.searchParams.set('ttclid', ttclidVal); finalURL.searchParams.set('ct3', ttclidVal); console.log('Adding ttclid/ct3:', ttclidVal); console.log('Redirecting to:', finalURL.toString()); window.location.href = finalURL.toString(); } else { console.log('Not mobile or no campaign URL'); } </script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+  
+  function getSlugFromPath() {
+    const path = window.location.pathname;
+    const slug = path.replace(/^\/+|\/+$/g, '');
+    return slug || '';
+  }
+
+  (function ensureTTCLIDParamOnLander() {
+    try {
+      const u = new URL(window.location.href);
+      if (!u.searchParams.has('ttclid')) {
+        u.searchParams.set('ttclid', '');
+        history.replaceState(null, '', u.toString());
+        console.log('Ensured ttclid param on lander URL');
+      }
+    } catch(e) { console.log('ttclid lander ensure error', e); }
+  })();
+  
+  let s = getURLParameter('s');
+  const o = getURLParameter('o') || 'cash';
+  const slug = getSlugFromPath();
+  const ttclid = getURLParameter('ttclid');
+  
+  let campaignUrl;
+  let sourceValue = s;
+  let forceEmptySource = false;
+  let isSpecialCase = false;
+  
+  console.log('Checking offer:', o.toLowerCase(), 'source:', s);
+  
+  // [All your existing if/else conditions remain the same]
+  if (o.toLowerCase() === 'apple' && s === 'Test') {
+    campaignUrl = 'https://fb.track-conv.shop/visit/4240dd82-3e3d-4d47-a253-ee1a528396ab';
+    sourceValue = 'Test';
+    forceEmptySource = true;
+    isSpecialCase = true;
+  }
+  
+  console.log('Final campaignUrl:', campaignUrl);
+  console.log('Final sourceValue:', sourceValue);
+  console.log('forceEmptySource:', forceEmptySource);
+  
+  const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  
+  if (isMobile && campaignUrl) {
+    const finalURL = new URL(campaignUrl);
+    
+    if (forceEmptySource) {
+      finalURL.searchParams.set('s1', '');
+      console.log('Adding empty s1');
+    } else if (sourceValue) {
+      finalURL.searchParams.set('s1', sourceValue);
+      console.log('Adding s1:', sourceValue);
+    }
+    
+    if (slug) {
+      finalURL.searchParams.set('s2', slug);
+      console.log('Adding s2:', slug);
+    }
+
+    const ttclidVal = (ttclid !== null) ? ttclid : '';
+    finalURL.searchParams.set('ttclid', ttclidVal);
+    finalURL.searchParams.set('ct3', ttclidVal);
+    console.log('Adding ttclid/ct3:', ttclidVal);
+    
+    
+    console.log('Redirecting to:', finalURL.toString());
+    window.location.href = finalURL.toString();
+  } else {
+    console.log('Not mobile or no campaign URL');
+  }
+</script><meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900%7COpen%20Sans:100,200,300,400,500,600,700,800,900%7CMontserrat:100,200,300,400,500,600,700,800,900%7CRoboto:100,200,300,400,500,600,700,800,900%7CInter:100,200,300,400,500,600,700,800,900%7CPoppins:100,200,300,400,500,600,700,800,900&display=swap" media="print" onload="this.media='all'">
 <style type="text/css"> 
